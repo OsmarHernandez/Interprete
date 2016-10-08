@@ -1,7 +1,7 @@
 # Interprete
 Matemáticas Computacionales
 
-1. Poder ejecutar las operaciones de suma (+), resta (-), multiplicación (*), división (/), potencia (ˆ), modulo ( %) y la agrupación por medio de paréntesis.
+1. Poder ejecutar las operaciones de suma (+), resta (-), multiplicación (*), división (/), potencia (ˆ), modulo (%) y la agrupación por medio de paréntesis.
 
 2. Tener la habilidad de declarar variables y asignarles el resultado de una expresión mediante el símbolo de igualdad (=). 26 variables como mínimo. Cada letra del alfabeto ingles.
 
