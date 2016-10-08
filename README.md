@@ -15,8 +15,7 @@ Matemáticas Computacionales
 
 
 
-*Integrantes:*
-
+###### Integrantes:
   Jesus Ruiz          A01243470
   
   Osmar Hernandez     A01243707
