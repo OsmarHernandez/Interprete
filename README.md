@@ -13,11 +13,7 @@ Matemáticas Computacionales
 
 6. Habilidad para definir funciones en el lenguaje. (5 pts)
 
-
-
-###### Integrantes:
-  Jesus Ruiz          A01243470
-  
-  Osmar Hernandez     A01243707
-  
-  Armando Minjares    A01244070
+## Integrantes
+1. Jesus Ruiz A01243470
+2. Osmar Hernandez A01244070
+3. Armando Minjares A01243707
