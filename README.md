@@ -14,6 +14,7 @@ Matemáticas Computacionales
 6. Habilidad para definir funciones en el lenguaje. (5 pts)
 
 
+
 Integrantes:
 
   Jesus Ruiz          A01243470
