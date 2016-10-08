@@ -15,6 +15,9 @@ Matemáticas Computacionales
 
 
 Integrantes:
+
   Jesus Ruiz          A01243470
+  
   Osmar Hernandez     A01243707
+  
   Armando Minjares    A01244070
