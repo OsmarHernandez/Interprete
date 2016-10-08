@@ -15,7 +15,7 @@ Matemáticas Computacionales
 
 
 
-Integrantes:
+*Integrantes:*
 
   Jesus Ruiz          A01243470
   
