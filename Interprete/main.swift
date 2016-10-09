@@ -19,9 +19,6 @@ func textoUsuario() {
     entrada = readLine()!
 }
 
-textoUsuario()
-print(entrada!)
-
 class Token {
     var tipo: String    // ENTERO, OPERANDO, EOF
     var valor: String   // [0 - 9], [+ - * /]
@@ -47,21 +44,26 @@ class Lexer {
             if texto[finalString] == "3" {
                 tokenValorA = Token(entradaTipo: "ENTERO", entradaValor: "3")
                 print("Token creado, valor: \(tokenValorA!.valor)")
+                sleep(2)
             }
             
             if texto[finalString] == "+" {
                 tokenValorB = Token(entradaTipo: "OPERANDO", entradaValor: "+")
                 print("Token creado, valor: \(tokenValorB!.valor)")
+                sleep(2)
             }
             
             if texto[finalString] == "2" {
                 tokenValorC = Token(entradaTipo: "ENTERO", entradaValor: "2")
                 print("Token creado, valor: \(tokenValorC!.valor)")
+                sleep(2)
             }
             posicion += 1
         }
     }
 }
+
+let lexer = Lexer()
 
 func operaciones(valorOperando operando: String) {
     let valorX: Int? = Int(lexer.tokenValorA!.valor)!
@@ -85,7 +87,13 @@ func operaciones(valorOperando operando: String) {
     print(resultado)
 }
 
-let lexer = Lexer()
-lexer.separandoToken(textoEntrada: entrada!)
-print(lexer.tokenValorB!.valor)
-operaciones(valorOperando: lexer.tokenValorB!.valor)
+func main() {
+    print(bienvenida)
+    sleep(2)
+    textoUsuario()
+    print("Entrada: \(entrada!)")
+    lexer.separandoToken(textoEntrada: entrada!)
+    operaciones(valorOperando: lexer.tokenValorB!.valor)
+}
+
+main()
