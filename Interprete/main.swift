@@ -10,37 +10,37 @@ import Foundation
  * Primera Parte : Calculadora
  */
 
-let welcome: String = "**** Welcome to the first part of the interpreter, the Calculator ****"
+let bienvenida: String = "**** Beinvenid a la primera parte del interprete: Calculadora ****"
 let example: String = "Introduce alguna operacion aritmetica. Ej. 3 + 5"
-var input: String = ""
+var entrada: String = ""
 
 // Operacion generada por el usuario
 func userString() {
     print(example)
-    return input = readLine()!
+    return entrada = readLine()!
 }
 
 // Prueba
 func prueba() {
-    print("Usuario tecleo: \(input), Tamaño: \(input.characters.count)")
+    print("Usuario tecleo: \(entrada), Tamaño: \(entrada.characters.count)")
 }
 
 /**
- * Separando String para dividirlo en Token (Lexer?)
+ * Separando String para dividirlo en Token (separandoString?)
  */
-func Lexer(inputString input: String) {
+func separandoString(entradaString entrada: String) {
     // Arreglo de caracteres
     var array = [Character]()
     
     // Descomponiendo el string para crear el arreglo que determinara los tokens
-    for character in input.characters {
+    for character in entrada.characters {
         array.append(character)
     }
 }
 
 userString()
 prueba()
-Lexer(inputString: input)
+separandoString(entradaString: entrada)
 
 /**
  * Predefiniendo Token. <Tipo, Dato> Ej: <INTEGER, 3>
