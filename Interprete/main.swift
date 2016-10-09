@@ -10,7 +10,7 @@ import Foundation
  * Primera Parte : Calculadora
  */
 
-let bienvenida: String = "**** Beinvenid a la primera parte del interprete: Calculadora ****"
+let bienvenida: String = "**** Bienvenido a la primera parte del interprete: Calculadora ****"
 let ejemplo: String = "Introduce alguna operacion aritmetica.\n Ej. 3 + 5..."
 var entrada: String?
 
@@ -36,28 +36,31 @@ class Lexer {
     
     func separandoToken(textoEntrada texto: String) {
         var posicion = 0
-        
+        var firstToken = false
+
         while posicion < texto.characters.count {
             let inicioString = texto.startIndex
             let finalString = inicioString.advancedBy(posicion)
+
+            let valorLeido:String = String(texto[finalString])
+            let valorActual: String = String(texto[finalString])
             
-            if texto[finalString] == "3" {
-                tokenValorA = Token(entradaTipo: "ENTERO", entradaValor: "3")
-                print("Token creado, valor: \(tokenValorA!.valor)")
+            if Int(valorLeido) != nil {
+                if (firstToken == false) {
+                    tokenValorA = Token(entradaTipo: "ENTERO", entradaValor: valorActual)
+                    print("Token creado, valor: \(tokenValorA!.valor)")
+                    firstToken = true
+                } else if (firstToken == true){
+                    tokenValorC = Token(entradaTipo: "ENTERO", entradaValor: valorActual)
+                    print("Token creado, valor: \(tokenValorC!.valor)")
+                }
                 sleep(2)
-            }
-            
-            if texto[finalString] == "+" {
-                tokenValorB = Token(entradaTipo: "OPERANDO", entradaValor: "+")
+            } else if valorActual == "+" || valorActual == "-" || valorActual == "*" || valorActual == "/" {
+                tokenValorB = Token(entradaTipo: "OPERANDO", entradaValor: valorActual)
                 print("Token creado, valor: \(tokenValorB!.valor)")
                 sleep(2)
             }
             
-            if texto[finalString] == "2" {
-                tokenValorC = Token(entradaTipo: "ENTERO", entradaValor: "2")
-                print("Token creado, valor: \(tokenValorC!.valor)")
-                sleep(2)
-            }
             posicion += 1
         }
     }
