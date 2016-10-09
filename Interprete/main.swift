@@ -45,50 +45,49 @@ class Lexer {
             let valorLeido:String = String(texto[finalString])
             let valorActual: String = String(texto[finalString])
             
-            if Int(valorLeido) != nil {
-                if (firstToken == false) {
-                    tokenValorA = Token(entradaTipo: "ENTERO", entradaValor: valorActual)
-                    print("Token creado, valor: \(tokenValorA!.valor)")
-                    firstToken = true
-                } else if (firstToken == true){
-                    tokenValorC = Token(entradaTipo: "ENTERO", entradaValor: valorActual)
-                    print("Token creado, valor: \(tokenValorC!.valor)")
-                }
+            if Int(valorLeido) != nil && firstToken == false {
+                tokenValorA = Token(entradaTipo: "ENTERO", entradaValor: valorActual)
+                print("Token creado, valor: \(tokenValorA!.valor)")
                 sleep(2)
             } else if valorActual == "+" || valorActual == "-" || valorActual == "*" || valorActual == "/" {
                 tokenValorB = Token(entradaTipo: "OPERANDO", entradaValor: valorActual)
                 print("Token creado, valor: \(tokenValorB!.valor)")
+                firstToken = true
+                sleep(2)
+            } else if Int(valorLeido) != nil && firstToken == true {
+                tokenValorC = Token(entradaTipo: "OPERANDO", entradaValor: valorActual)
+                print("Token creado, valor: \(tokenValorC!.valor)")
                 sleep(2)
             }
             
             posicion += 1
         }
     }
+    
+    func operaciones(valorOperando operando: String) {
+        let valorX: Int? = Int(lexer.tokenValorA!.valor)!
+        let valorY: Int? = Int(lexer.tokenValorC!.valor)!
+        
+        var resultado: Int
+        
+        switch operando {
+        case "+":
+            resultado = valorX! + valorY!
+        case "-":
+            resultado = valorX! - valorY!
+        case "*":
+            resultado = valorX! * valorY!
+        case "/":
+            resultado = valorX! / valorY!
+        default:
+            resultado = 0
+        }
+        
+        print(resultado)
+    }
 }
 
 let lexer = Lexer()
-
-func operaciones(valorOperando operando: String) {
-    let valorX: Int? = Int(lexer.tokenValorA!.valor)!
-    let valorY: Int? = Int(lexer.tokenValorC!.valor)!
-    
-    var resultado: Int
-    
-    switch operando {
-    case "+":
-        resultado = valorX! + valorY!
-    case "-":
-        resultado = valorX! - valorY!
-    case "*":
-        resultado = valorX! * valorY!
-    case "/":
-        resultado = valorX! / valorY!
-    default:
-        resultado = 0
-    }
-    
-    print(resultado)
-}
 
 func main() {
     print(bienvenida)
@@ -96,7 +95,7 @@ func main() {
     textoUsuario()
     print("Entrada: \(entrada!)")
     lexer.separandoToken(textoEntrada: entrada!)
-    operaciones(valorOperando: lexer.tokenValorB!.valor)
+    lexer.operaciones(valorOperando: lexer.tokenValorB!.valor)
 }
 
 main()
