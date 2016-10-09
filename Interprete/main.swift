@@ -20,7 +20,7 @@ func textoUsuario() {
 }
 
 class Token {
-    var tipo: String    // ENTERO, OPERANDO, EOF
+    var tipo: String    // ENTERO, OPERANDO, EOF (no utilizado)
     var valor: String   // [0 - 9], [+ - * /]
     
     init(entradaTipo tipo: String, entradaValor valor: String) {
@@ -35,8 +35,9 @@ class Lexer {
     var tokenValorC: Token?
     
     func separandoToken(textoEntrada texto: String) {
-        var posicion = 0
-        var firstToken = false
+        var posicion: Int = 0
+        var firstToken: Bool = false
+        var thereIsValue: Bool = false
 
         while posicion < texto.characters.count {
             let inicioString = texto.startIndex
@@ -46,18 +47,34 @@ class Lexer {
             let valorActual: String = String(texto[finalString])
             
             if Int(valorLeido) != nil && firstToken == false {
-                tokenValorA = Token(entradaTipo: "ENTERO", entradaValor: valorActual)
-                print("Token creado, valor: \(tokenValorA!.valor)")
-                sleep(2)
+                if thereIsValue == false {
+                    tokenValorA = Token(entradaTipo: "ENTERO", entradaValor: valorActual)
+                    print("Token creado, valor: \(tokenValorA!.valor)")
+                    thereIsValue = true
+                    sleep(2)
+                } else if thereIsValue == true {
+                    tokenValorA!.valor += valorActual
+                    print("Token actualizado, valor: \(tokenValorA!.valor)")
+                    sleep(2)
+                }
             } else if valorActual == "+" || valorActual == "-" || valorActual == "*" || valorActual == "/" {
                 tokenValorB = Token(entradaTipo: "OPERANDO", entradaValor: valorActual)
                 print("Token creado, valor: \(tokenValorB!.valor)")
                 firstToken = true
+                thereIsValue = false // CAMBIAR PARA NO CONFUNDIR
                 sleep(2)
             } else if Int(valorLeido) != nil && firstToken == true {
-                tokenValorC = Token(entradaTipo: "OPERANDO", entradaValor: valorActual)
-                print("Token creado, valor: \(tokenValorC!.valor)")
-                sleep(2)
+                if thereIsValue == false {
+                    tokenValorC = Token(entradaTipo: "OPERANDO", entradaValor: valorActual)
+                    print("Token creado, valor: \(tokenValorC!.valor)")
+                    thereIsValue = true
+                    sleep(2)
+                }
+                else if thereIsValue == true {
+                    tokenValorC!.valor += valorActual
+                    print("Token actualizado, valor: \(tokenValorC!.valor)")
+                    sleep(2)
+                }
             }
             
             posicion += 1
