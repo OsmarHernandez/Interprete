@@ -11,40 +11,81 @@ import Foundation
  */
 
 let bienvenida: String = "**** Beinvenid a la primera parte del interprete: Calculadora ****"
-let example: String = "Introduce alguna operacion aritmetica. Ej. 3 + 5"
-var entrada: String = ""
+let ejemplo: String = "Introduce alguna operacion aritmetica.\n Ej. 3 + 5..."
+var entrada: String?
 
-// Operacion generada por el usuario
-func userString() {
-    print(example)
-    return entrada = readLine()!
+func textoUsuario() {
+    print(ejemplo)
+    entrada = readLine()!
 }
 
-// Prueba
-func prueba() {
-    print("Usuario tecleo: \(entrada), Tamaño: \(entrada.characters.count)")
-}
+textoUsuario()
+print(entrada!)
 
-/**
- * Separando String para dividirlo en Token (separandoString?)
- */
-func separandoString(entradaString entrada: String) {
-    // Arreglo de caracteres
-    var array = [Character]()
+class Token {
+    var tipo: String    // ENTERO, OPERANDO, EOF
+    var valor: String   // [0 - 9], [+ - * /]
     
-    // Descomponiendo el string para crear el arreglo que determinara los tokens
-    for character in entrada.characters {
-        array.append(character)
+    init(entradaTipo tipo: String, entradaValor valor: String) {
+        self.tipo = tipo
+        self.valor = valor
     }
 }
 
-userString()
-prueba()
-separandoString(entradaString: entrada)
-
-/**
- * Predefiniendo Token. <Tipo, Dato> Ej: <INTEGER, 3>
- */
-class Token {
+class Lexer {
+    var tokenValorA: Token?
+    var tokenValorB: Token?
+    var tokenValorC: Token?
     
+    func separandoToken(textoEntrada texto: String) {
+        var posicion = 0
+        
+        while posicion < texto.characters.count {
+            let inicioString = texto.startIndex
+            let finalString = inicioString.advancedBy(posicion)
+            
+            if texto[finalString] == "3" {
+                tokenValorA = Token(entradaTipo: "ENTERO", entradaValor: "3")
+                print("Token creado, valor: \(tokenValorA!.valor)")
+            }
+            
+            if texto[finalString] == "+" {
+                tokenValorB = Token(entradaTipo: "OPERANDO", entradaValor: "+")
+                print("Token creado, valor: \(tokenValorB!.valor)")
+            }
+            
+            if texto[finalString] == "2" {
+                tokenValorC = Token(entradaTipo: "ENTERO", entradaValor: "2")
+                print("Token creado, valor: \(tokenValorC!.valor)")
+            }
+            posicion += 1
+        }
+    }
 }
+
+func operaciones(valorOperando operando: String) {
+    let valorX: Int? = Int(lexer.tokenValorA!.valor)!
+    let valorY: Int? = Int(lexer.tokenValorC!.valor)!
+    
+    var resultado: Int
+    
+    switch operando {
+    case "+":
+        resultado = valorX! + valorY!
+    case "-":
+        resultado = valorX! - valorY!
+    case "*":
+        resultado = valorX! * valorY!
+    case "/":
+        resultado = valorX! / valorY!
+    default:
+        resultado = 0
+    }
+    
+    print(resultado)
+}
+
+let lexer = Lexer()
+lexer.separandoToken(textoEntrada: entrada!)
+print(lexer.tokenValorB!.valor)
+operaciones(valorOperando: lexer.tokenValorB!.valor)
