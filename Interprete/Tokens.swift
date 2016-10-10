@@ -9,24 +9,32 @@
 import Foundation
 
 
-public enum token {
+public enum
+token {
     case define
     case identifier(String)
-    case number(Float)
-    case parensOpen
-    case parensClose
-    case comma
+    case floatant(Float)
+    case LParen
+    case RParen
     case other(String)
+    case LBrace
+    case RBrace
+    case Return, If, Else, While
+    case Equal
+    
 }
 
 typealias TokenGenerator = (String) -> token?
 let tokenList: [(String, TokenGenerator)] = [
     ("[ \t\n]", { _ in nil }),
     ("[a-zA-Z][a-zA-Z0-9]*", { $0 == "def" ? .define : .identifier($0) }),
-    ("[0-9.]+", { (r: String) in .number((r as NSString).floatValue) }),
-    ("\\(", { _ in .parensOpen }),
-    ("\\)", { _ in .parensClose }),
-    (",", { _ in .comma }),
+    ("[0-9.]+", { (r: String) in .floatant((r as NSString).floatValue) }),
+    ("\\(", { _ in .LParen }),
+    ("\\)", { _ in .RParen }),
+    ("\\{", { _ in .LBrace }),
+    ("\\}", { _ in .RBrace }),
+    ("\\=", { _ in .Equal })
+    
 ]
 
 
