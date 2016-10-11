@@ -16,10 +16,18 @@
     print(welcome)
     print(example)
     inputString = readLine()!
-    
+  
+    printingTokens()
+ }
+ 
+ func printingTokens() {
     let token = Lexer(inputString: inputString!)
     
-    print("\(token)\n")
+    for elements in token {
+        print(elements)
+    }
+    
+    hierarchy(token)
  }
  
 main()
