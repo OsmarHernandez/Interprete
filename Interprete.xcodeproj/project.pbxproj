@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20218EE91DAC403100D09E9D /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20218EE81DAC403100D09E9D /* Tokens.swift */; };
 		204F2AE61DA99DDB004910B6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204F2AE51DA99DDB004910B6 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		20218EE81DAC403100D09E9D /* Tokens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
 		204F2AE21DA99DDB004910B6 /* Interprete */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Interprete; sourceTree = BUILT_PRODUCTS_DIR; };
 		204F2AE51DA99DDB004910B6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				204F2AE51DA99DDB004910B6 /* main.swift */,
+				20218EE81DAC403100D09E9D /* Tokens.swift */,
 			);
 			path = Interprete;
 			sourceTree = "<group>";
@@ -94,6 +97,7 @@
 				TargetAttributes = {
 					204F2AE11DA99DDB004910B6 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -120,6 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				204F2AE61DA99DDB004910B6 /* main.swift in Sources */,
+				20218EE91DAC403100D09E9D /* Tokens.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +217,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -219,6 +225,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -241,6 +248,7 @@
 				204F2AEB1DA99DDB004910B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
