@@ -26,6 +26,7 @@ let tokenList: [(String, TokenGenerator)] = [
 ]
 
 var expressions = [String: NSRegularExpression]()
+
 public extension String {
     public func match(regex: String) -> String? {
         let expression: NSRegularExpression
@@ -43,7 +44,6 @@ public extension String {
         return nil
     }
 }
-
 
 func Lexer(inputString input: String) -> [Token] {
     var tokens: Array = Array<Token>()
