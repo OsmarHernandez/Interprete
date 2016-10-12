@@ -9,28 +9,16 @@
 import Foundation
 
 func hierarchy(Tokens : [Token]) {
-    let Tokens = Tokens
-
-    for element in Tokens {
-        switch element {
-        case .Operand("+"):
-            // Checar prioridad
-            print("A huevo puto! Soy un mas")
-        case .Operand("-"):
-            // Checar prioridad
-            print("A huevo puto! Soy un menos")
-        case .Operand("*"):
-            // Checar prioridad
-            print("A huevo puto! Soy un asterisco")
-        case .Operand("/"):
-            // Checar prioridad
-            print("A huevo puto! Soy un diagonal")
-        case .Number(0...999999):
-            // Guardar numero... ¿Metodo recursivo?
-            print("Encontre un numero!")
-        default:
-            print("Sigue participando")
+    for token in Tokens {
+        switch token {
+        case let .Operand(token):
+            print(token)
+        case let .Number(token):
+            print(token)
+        case let .ParenthOp(token):
+            print(token)
+        case let .ParenthCl(token):
+            print(token)
         }
-        print(element)
     }
 }

@@ -10,23 +10,30 @@ import Foundation
 
 let spaceRegex: String = "[ \t\n]"
 let numberRegex: String = "[0-9]+"
+let ptopenRegex: String = "[\\(]"
+let ptcloseRegex: String = "[\\)]"
 let operandRegex: String = "[\\+\\-\\*\\/]"
 
 enum Token {
     case Number(Int)
     case Operand(String)
+    case ParenthOp(String)
+    case ParenthCl(String)
 }
 
 typealias TokenGenerator = (String) -> Token?
 
-let tokenList: [(String, TokenGenerator)] = [
+let tokenList: Array<(String, TokenGenerator)> = [
     (spaceRegex, {_ in nil}),
     (numberRegex, {(intValue: String) in .Number((intValue as NSString).integerValue)}),
-    (operandRegex, {(stringValue: String) in .Operand(stringValue)})
+    (operandRegex, {(stringValue: String) in .Operand(stringValue)}),
+    (ptopenRegex, {(stringValue: String) in .Operand(stringValue)}),
+    (ptcloseRegex, {(stringValue: String) in .Operand(stringValue)})
 ]
 
 var expressions = [String: NSRegularExpression]()
 
+// Modificar
 public extension String {
     public func match(regex: String) -> String? {
         let expression: NSRegularExpression

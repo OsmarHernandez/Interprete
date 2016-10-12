@@ -17,17 +17,8 @@
     print(example)
     inputString = readLine()!
   
-    printingTokens()
- }
- 
- func printingTokens() {
-    let token = Lexer(inputString: inputString!)
-    
-    for elements in token {
-        print(elements)
-    }
-    
-    hierarchy(token)
+    let tokens = Lexer(inputString: inputString!)
+    hierarchy(tokens)
  }
  
 main()
