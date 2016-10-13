@@ -8,10 +8,10 @@
 
 import Foundation
 
-let spaceRegex: String = "[ \t\n]"
+let spaceRegex: String = "[\\s]"
 let numberRegex: String = "[0-9]+"
-let ptopenRegex: String = "[\\(]"
-let ptcloseRegex: String = "[\\)]"
+let ptopenRegex: String = "\\("
+let ptcloseRegex: String = "\\)"
 let operandRegex: String = "[\\+\\-\\*\\/]"
 
 enum Token {
@@ -27,8 +27,8 @@ let tokenList: Array<(String, TokenGenerator)> = [
     (spaceRegex, {_ in nil}),
     (numberRegex, {(intValue: String) in .Number((intValue as NSString).integerValue)}),
     (operandRegex, {(stringValue: String) in .Operand(stringValue)}),
-    (ptopenRegex, {(stringValue: String) in .Operand(stringValue)}),
-    (ptcloseRegex, {(stringValue: String) in .Operand(stringValue)})
+    (ptopenRegex, {(stringValue: String) in .ParenthOp(stringValue)}),
+    (ptcloseRegex, {(stringValue: String) in .ParenthCl(stringValue)})
 ]
 
 var expressions = [String: NSRegularExpression]()
@@ -56,7 +56,7 @@ func Lexer(inputString input: String) -> [Token] {
     var tokens: Array = Array<Token>()
     var input: String = input
 
-    while (input.characters.count > 0) {
+    while input.characters.count > 0 {
         
         for (pattern, generator) in tokenList {
             if let theValue = input.match(pattern) {

@@ -18,7 +18,12 @@
     inputString = readLine()!
   
     let tokens = Lexer(inputString: inputString!)
-    hierarchy(tokens)
+
+    let newValues = generateValues(tokens)
+
+    for values in newValues {
+        print(values)
+    }
  }
  
 main()
