@@ -7,7 +7,8 @@
 //
 
 import Foundation
-
+//lo de la parte de rpn y operaciones https://en.wikipedia.org/wiki/Shunting-yard_algorithm
+//agregue esta clase por que swift no maneja stacks entonces las tuve que crear yo
 class Stack {
     var stackArray = [String]()
     
