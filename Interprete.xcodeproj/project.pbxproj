@@ -10,6 +10,7 @@
 		20218EE91DAC403100D09E9D /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20218EE81DAC403100D09E9D /* Tokens.swift */; };
 		20218EED1DAD75A800D09E9D /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20218EEC1DAD75A800D09E9D /* Operations.swift */; };
 		204F2AE61DA99DDB004910B6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204F2AE51DA99DDB004910B6 /* main.swift */; };
+		942295A41DB1974C002041A2 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942295A31DB1974C002041A2 /* Stack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,7 @@
 		20218EEC1DAD75A800D09E9D /* Operations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
 		204F2AE21DA99DDB004910B6 /* Interprete */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Interprete; sourceTree = BUILT_PRODUCTS_DIR; };
 		204F2AE51DA99DDB004910B6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		942295A31DB1974C002041A2 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				204F2AE51DA99DDB004910B6 /* main.swift */,
 				20218EE81DAC403100D09E9D /* Tokens.swift */,
 				20218EEC1DAD75A800D09E9D /* Operations.swift */,
+				942295A31DB1974C002041A2 /* Stack.swift */,
 			);
 			path = Interprete;
 			sourceTree = "<group>";
@@ -126,6 +129,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				942295A41DB1974C002041A2 /* Stack.swift in Sources */,
 				20218EED1DAD75A800D09E9D /* Operations.swift in Sources */,
 				204F2AE61DA99DDB004910B6 /* main.swift in Sources */,
 				20218EE91DAC403100D09E9D /* Tokens.swift in Sources */,

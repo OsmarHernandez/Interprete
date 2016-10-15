@@ -16,9 +16,10 @@
     print(welcome)
     print(example)
     inputString = readLine()!
-  
+    /*while inputString != "" {
+        
+    }*/
     let tokens = Lexer(inputString: inputString!)
-    hierarchy(tokens)
  }
  
 main()
