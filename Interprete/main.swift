@@ -7,3 +7,24 @@
  //
  
  import Foundation
+ 
+ // Constantes a mostrar al inicio del programa
+ let bienvenida: String = "**** Bienvenido a la primera parte del Interprete: Calculadora ****"
+ let instrucciones: String = "\t Solo se permiten numeros enteros como entrada.\n\t No puede haber espacio entre los numeros.\n\t Solo puede hacer la operacion de suma."
+ let consola: String = "Calculadora: "
+ 
+ // Entrada del usuario como opcional
+ var input: String?
+ 
+ // Imprimiendo constantes
+ print(bienvenida)
+ print(instrucciones)
+ print(consola)
+ 
+ // Asignando la entrada del usuario como string
+ input = readLine()!
+ 
+ // Ejecutando la funcion de Lexer(_:)
+ let lexer = Lexer(inputString: input!)
+ 
+ // Realizando la suma

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		201903B91DB1A0ED0068DE33 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201903B81DB1A0ED0068DE33 /* Lexer.swift */; };
+		201903BB1DB1A8BC0068DE33 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201903BA1DB1A8BC0068DE33 /* Extensions.swift */; };
 		204F2AE61DA99DDB004910B6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204F2AE51DA99DDB004910B6 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		201903B81DB1A0ED0068DE33 /* Lexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
+		201903BA1DB1A8BC0068DE33 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		204F2AE21DA99DDB004910B6 /* Interprete */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Interprete; sourceTree = BUILT_PRODUCTS_DIR; };
 		204F2AE51DA99DDB004910B6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +62,8 @@
 			isa = PBXGroup;
 			children = (
 				204F2AE51DA99DDB004910B6 /* main.swift */,
+				201903B81DB1A0ED0068DE33 /* Lexer.swift */,
+				201903BA1DB1A8BC0068DE33 /* Extensions.swift */,
 			);
 			path = Interprete;
 			sourceTree = "<group>";
@@ -120,6 +126,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				201903B91DB1A0ED0068DE33 /* Lexer.swift in Sources */,
+				201903BB1DB1A8BC0068DE33 /* Extensions.swift in Sources */,
 				204F2AE61DA99DDB004910B6 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
