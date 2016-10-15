@@ -20,6 +20,7 @@
         
     }*/
     let tokens = Lexer(inputString: inputString!)
+    operation(toPostfix(tokens))
  }
  
 main()

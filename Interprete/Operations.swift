@@ -68,26 +68,45 @@ func toPostfix( Tokens : [Token] ) -> Stack{
         }
         postFix.push(operatorStack.pop()!)
     }
-    
+    //lee, cambia
     repeat {
         refix.push(postFix.pop()!)
     } while !postFix.isEmpty()
     return refix
 }
 
-func hierarchy(Tokens : [Token]) {
+func operation(post: Stack) {
+    let operands = Stack()
     
-    for token in Tokens {
-        switch token {
-        case let .Operator(token):
-            print(token)
-        case let .Number(token):
-            print(token)
-        case let .ParenthOp(token):
-            print(token)
-        case let .ParenthCl(token):
-            print(token)
+    repeat{
+        if Int(post.top()!) != nil {
+            operands.push(post.pop()!)
         }
-    }
+        if post.top() == "+" || post.top() == "-" || post.top() == "*" || post.top() == "/" || post.top() == "^" || post.top() == "%" {
+            let op2 = operands.pop()!//2
+            let op1 = operands.pop()!//1
+            let opr = post.pop()!
+            print(op1,opr,op2)
+        }
+    } while !post.isEmpty()
     
+}
+
+func evaluate(operand1: Int,operand2: Int, opera: String) -> Int{
+    switch opera {
+    case "+":
+        return operand1+operand2
+    case "-":
+        return operand1-operand2
+    case "*":
+        return operand1*operand2
+    case "/":
+        return operand1/operand2
+    case "^":
+        return operand1^operand2
+    case "%":
+        return operand1%operand2
+    default:
+        return 0
+    }
 }
