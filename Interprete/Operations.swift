@@ -86,13 +86,13 @@ func operation(post: Stack) {
             let op2 = operands.pop()!//2
             let op1 = operands.pop()!//1
             let opr = post.pop()!
-            print(op1,opr,op2)
+            print(evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr))
         }
     } while !post.isEmpty()
     
 }
 
-func evaluate(operand1: Int,operand2: Int, opera: String) -> Int{
+func evaluate( operand1: Int, operand2: Int, opera: String) -> Int{
     switch opera {
     case "+":
         return operand1+operand2
