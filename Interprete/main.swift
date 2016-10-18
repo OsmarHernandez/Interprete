@@ -27,4 +27,6 @@
  // Ejecutando la funcion de Lexer(_:)
  let lexer = Lexer(inputString: input!)
  
- // Realizando la suma
+ for element in lexer {
+    print(element)
+ }

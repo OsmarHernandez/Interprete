@@ -17,9 +17,10 @@ import Foundation
  */
 
 // Expresiones Regulares
+let spaceRegex: String = "[\\s]"
 let numberRegex: String = "[0-9]+"
-let operandRegex: String = "[\\+]"
-
+let operandRegex: String = "[\\+\\-\\*\\/\\^\\%]"
+let identifierRegex: String = "[a-zA-Z][a-zA-Z0-9]*"    // var, const
 
 /*
     Un token es un objeton que contiene su tipo y valor.
@@ -29,6 +30,7 @@ let operandRegex: String = "[\\+]"
 enum Token {
     case Number(Int)
     case Operand(String)
+    case Identifier(String)
 }
 
 // Creando Token mediante un Closure
@@ -36,8 +38,10 @@ typealias TokenGenerator = (String) -> Token?
 
 // Poniendo los Token en un arreglo
 let tokenList: Array<(String, TokenGenerator)> = [
+    (spaceRegex, {_ in nil}),
     (numberRegex, {(intValue: String) in .Number((intValue as NSString).integerValue)}),
-    (operandRegex, {(stringValue: String) in .Operand(stringValue)})
+    (operandRegex, {(stringValue: String) in .Operand(stringValue)}),
+    (identifierRegex, {(stringValue: String) in .Identifier(stringValue)})
 ]
 
 // Generando los Token
