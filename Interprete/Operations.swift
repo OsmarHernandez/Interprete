@@ -90,16 +90,15 @@ func operation(post: Stack) {
         }
         if post.top() == "+" || post.top() == "-" || post.top() == "*" || post.top() == "/" || post.top() == "^" || post.top() == "%" {
             let op2 = operands.pop()!
-            var op1: String
-            if operands.pop()!.isEmpty {
-                op1 = results.pop()!
-            }else{
-                op1 = operands.pop()!
-            }
-            
+            let op1 = operands.pop()!
             let opr = post.pop()!
-            results.push(String(evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr)))
-            print(evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr))
+            
+            if operands.isEmpty() {
+                print(evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr))
+            }else{
+                operands.push(String(evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr)))
+
+            }
         }
     } while !post.isEmpty()
     
@@ -116,7 +115,7 @@ func evaluate( operand1: Int, operand2: Int, opera: String) -> Int{
     case "/":
         return operand1/operand2
     case "^":
-        return operand1^operand2
+        return Int(pow(Double(operand1), Double(operand2)))
     case "%":
         return operand1%operand2
     default:
