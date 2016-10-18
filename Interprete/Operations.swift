@@ -23,7 +23,7 @@ func precedence( oper: String )-> Int {
     case "-":
         return 1
     default:
-        return 0
+        return 1
     }
 }
 
@@ -42,7 +42,11 @@ func toPostfix( Tokens : [Token] ) -> Stack{
                 }
                 operatorStack.push(token)
             }
-            operatorStack.push(token)
+            if operatorStack.isEmpty() || operatorStack.top() == "("{
+                operatorStack.push(token)
+            }else{
+                operatorStack.push(token)
+            }
             
         case let .Number(token):
             postFix.push(String(token))
@@ -68,7 +72,8 @@ func toPostfix( Tokens : [Token] ) -> Stack{
     }
     
     repeat {
-        refix.push(postFix.pop()!)
+        print(postFix.pop()!)
+        //refix.push(postFix.pop()!)
     } while !postFix.isEmpty()
     
     /*          Descomentar para probar el postfix
@@ -82,7 +87,6 @@ func toPostfix( Tokens : [Token] ) -> Stack{
 
 func operation(post: Stack) {
     let operands = Stack()
-    let results = Stack()
     
     repeat{
         if Int(post.top()!) != nil {
@@ -93,7 +97,7 @@ func operation(post: Stack) {
             let op1 = operands.pop()!
             let opr = post.pop()!
             
-            if operands.isEmpty() {
+            if operands.isEmpty() && post.isEmpty() {
                 print(evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr))
             }else{
                 operands.push(String(evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr)))

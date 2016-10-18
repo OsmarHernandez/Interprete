@@ -8,7 +8,7 @@
 
 import Foundation
 
-let spaceRegex: String = "[ \t\n]"
+let spaceRegex: String = "[ \\s]"
 let numberRegex: String = "[0-9]+"
 let ptopenRegex: String = "[\\(]"
 let ptcloseRegex: String = "[\\)]"
