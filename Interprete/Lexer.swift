@@ -20,7 +20,8 @@ import Foundation
 let spaceRegex: String = "[\\s]"
 let numberRegex: String = "[0-9]+"
 let operandRegex: String = "[\\+\\-\\*\\/\\^\\%]"
-let identifierRegex: String = "[a-zA-Z][a-zA-Z0-9]*"    // var, const
+let variableRegex: String = "[a-zA-Z][a-zA-Z0-9]*" // para identificar variables
+let reservedRegex: String = "\\b(var)\\b"    // var, const, for, else, if, while, function
 
 /*
     Un token es un objeton que contiene su tipo y valor.
@@ -30,7 +31,9 @@ let identifierRegex: String = "[a-zA-Z][a-zA-Z0-9]*"    // var, const
 enum Token {
     case Number(Int)
     case Operand(String)
-    case Identifier(String)
+    case Variable(String)
+    case Reserved(String)
+
 }
 
 // Creando Token mediante un Closure
@@ -41,7 +44,7 @@ let tokenList: Array<(String, TokenGenerator)> = [
     (spaceRegex, {_ in nil}),
     (numberRegex, {(intValue: String) in .Number((intValue as NSString).integerValue)}),
     (operandRegex, {(stringValue: String) in .Operand(stringValue)}),
-    (identifierRegex, {(stringValue: String) in .Identifier(stringValue)})
+    (variableRegex, { $0 == "var" ? .Reserved : .Variable($0) }),
 ]
 
 // Generando los Token
