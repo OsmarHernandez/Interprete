@@ -9,6 +9,10 @@
 import Foundation
 
 
+/*
+    Para ejecutar todo esto, el primer token tiene que ser un .Reserver var
+ */
+
 // Diccionario para las constantes
 let inmutableDictionary: [String : Float] = ["pi" : 3.141592653589793,
                                              "e" : 2.718281828459045]
@@ -52,29 +56,25 @@ func creatingVariables(stack : Stack) -> [String : Int] {
                     
                     if stack.top() == "var" {
                         stack.pop()
-                        mutableDictionary = [keyVariable! : valVariable!]
+                        mutableDictionary[keyVariable!] = valVariable!
                     } else {
-                        print("Erro de sintaxis")
+                        print("Erro de sintaxis 1")
                         break
                     }
                 } else {
-                    print("Erro de sintaxis")
+                    print("Erro de sintaxis 2")
                     break
                 }
             } else {
-                print("Erro de sintaxis")
+                print("Erro de sintaxis 3")
                 break
             }
         } else {
-            print("Erro de sintaxis")
+            print("Erro de sintaxis 4")
             break
         }
     } while !stack.isEmpty()
-    
-    for (key, value) in mutableDictionary {
-        print("Contenido '\(key)' : '\(value)'.")
-    }
-    
+ 
     return mutableDictionary
 }
 

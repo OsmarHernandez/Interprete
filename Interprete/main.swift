@@ -9,30 +9,47 @@
  import Foundation
  
  // Constantes a mostrar al inicio del programa
- let bienvenida: String = "**** Bienvenido a la primera parte del Interprete: Calculadora ****"
- let instrucciones: String = "\t Solo se permiten numeros enteros como entrada.\n\t No puede haber espacio entre los numeros.\n\t Solo puede hacer la operacion de suma."
- let consola: String = "Calculadora: "
+ let bienvenida: String = "**** Bienvenido a alguna parte del Interprete: Creacion de Variables ****"
+ let instrucciones: String = "\t Inicia la oracion con el prefijo 'var'.\n\t Seguido crea el nombre de la variable.\n\t El simbolo '=' servira para asignar un valor a tu variable.\n\t Ingresa un numero con valor de entero."
+ let consola: String = "tryMe>: "
  
- // Entrada del usuario como opcional
- var input: String?
- 
- // Imprimiendo constantes
- print(bienvenida)
- print(instrucciones)
- print(consola)
- 
- // Asignando la entrada del usuario como string
- input = readLine()!
- 
- // Ejecutando la funcion de Lexer(_:)
- let lexer = Lexer(inputString: input!)
- 
- for element in lexer {
-    print(element)
+ func menu() {
+    print(bienvenida)
+    sleep(2)
+    print(instrucciones)
+    sleep(5)
  }
  
- // Probando stack
- let stack = toStack(lexer)
+ menu()
+
+ func entrada() -> String {
+    var input: String?
+    print(consola)
+    input = readLine()!
+    
+    return input!
+ }
  
- // Probando diccionario
- var dictionary = creatingVariables(stack)
+ func tokens() -> [Token] {
+    let Tokens = Lexer(inputString: entrada())
+    
+    return Tokens
+ }
+ 
+ func stack() -> Stack {
+    let Stack = toStack(tokens())
+    
+    return Stack
+ }
+ 
+ func variables() -> [String : Int] {
+    let variableDictionary = creatingVariables(stack())
+    
+    for (key, value) in variableDictionary {
+        print("\(key) : \(value)")
+    }
+    
+    return variableDictionary
+ }
+ 
+variables()
