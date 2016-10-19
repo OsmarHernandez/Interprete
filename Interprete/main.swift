@@ -30,3 +30,9 @@
  for element in lexer {
     print(element)
  }
+ 
+ // Probando stack
+ let stack = toStack(lexer)
+ 
+ // Probando diccionario
+ var dictionary = creatingVariables(stack)

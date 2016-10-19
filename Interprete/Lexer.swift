@@ -9,31 +9,29 @@
 import Foundation
 
 /*
-    Primera parte de la calculadora.
-        Reglas:
-        1. Solo se permiten numeros enteros como entrada.
-        2. No puede haber espacio entre los numeros.
-        3. Solo puede hacer la operacion de suma
+ Primera parte de la calculadora.
+ Reglas:
+ 1. Solo se permiten numeros enteros como entrada.
+ 2. No puede haber espacio entre los numeros.
+ 3. Solo puede hacer la operacion de suma
  */
 
 // Expresiones Regulares
 let spaceRegex: String = "[\\s]"
 let numberRegex: String = "[0-9]+"
-let operandRegex: String = "[\\+\\-\\*\\/\\^\\%]"
+let operandRegex: String = "[\\+\\-\\*\\/\\^\\%\\=]"    // manejar = como operand o lo pongo aparte como igualdad?
 let variableRegex: String = "[a-zA-Z][a-zA-Z0-9]*" // para identificar variables
-let reservedRegex: String = "\\b(var)\\b"    // var, const, for, else, if, while, function
 
 /*
-    Un token es un objeton que contiene su tipo y valor.
+ Un token es un objeton que contiene su tipo y valor.
  */
 
 // Tipos de Token
 enum Token {
     case Number(Int)
     case Operand(String)
-    case Variable(String)
-    case Reserved(String)
-
+    case Variable(String)   // cualquier nombre para una variable
+    case Reserved(String)   // var, const, for, else, if, while, function
 }
 
 // Creando Token mediante un Closure
@@ -44,7 +42,7 @@ let tokenList: Array<(String, TokenGenerator)> = [
     (spaceRegex, {_ in nil}),
     (numberRegex, {(intValue: String) in .Number((intValue as NSString).integerValue)}),
     (operandRegex, {(stringValue: String) in .Operand(stringValue)}),
-    (variableRegex, { $0 == "var" ? .Reserved : .Variable($0) }),
+    (variableRegex, { $0 == "var" || $0 == "const" ? .Reserved($0) : .Variable($0) })
 ]
 
 // Generando los Token

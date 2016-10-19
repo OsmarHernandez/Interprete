@@ -1,8 +1,8 @@
 //
-//  Extensions.swift
+//  Extenssions.swift
 //  Interprete
 //
-//  Created by  Osmar Hernández, Jesus Ruiz and Armando Minjares on 14/10/16.
+//  Created by Osmar Hernández, Jesus Ruiz and Armando Minjareson 17/10/16.
 //  Copyright © 2016 Osmar Hernández. All rights reserved.
 //
 
