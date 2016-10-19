@@ -72,7 +72,7 @@ func creatingVariables(stack : Stack) -> [String : Int] {
     } while !stack.isEmpty()
     
     for (key, value) in mutableDictionary {
-        print("Contenido '\(key)' is '\(value)'.")
+        print("Contenido '\(key)' : '\(value)'.")
     }
     
     return mutableDictionary
