@@ -17,6 +17,8 @@ import Foundation
 let inmutableDictionary: [String : Float] = ["pi" : 3.141592653589793,
                                              "e" : 2.718281828459045]
 
+var mutableDictionary: [String : Int] = [:]
+
 func toStack(Tokens : [Token]) -> Stack {
     let theStack = Stack()
     
@@ -39,13 +41,12 @@ func toStack(Tokens : [Token]) -> Stack {
 }
 
 func creatingVariables(stack : Stack) -> [String : Int] {
-    var mutableDictionary: [String : Int] = [:]
-    
     var valVariable: Int?
     var keyVariable: String?
     
     repeat {
         if Int(stack.top()!) != nil {
+            // else if stack.top()! es una letra, buscar el valor, si este no existe marcar error
             valVariable = Int(stack.pop()!)
             
             if stack.top() == "=" {
@@ -58,24 +59,44 @@ func creatingVariables(stack : Stack) -> [String : Int] {
                         stack.pop()
                         mutableDictionary[keyVariable!] = valVariable!
                     } else {
-                        print("Erro de sintaxis 1")
+                        print("Erro de sintaxis 4")
                         break
                     }
                 } else {
-                    print("Erro de sintaxis 2")
+                    print("Erro de sintaxis 3")
                     break
                 }
             } else {
-                print("Erro de sintaxis 3")
+                print("Erro de sintaxis 2")
                 break
             }
         } else {
-            print("Erro de sintaxis 4")
+            print("Erro de sintaxis 1")
             break
         }
     } while !stack.isEmpty()
  
     return mutableDictionary
+}
+
+func retrieveConstant(input : String) -> Float {
+    var varValue: Float?
+    
+    if let value = inmutableDictionary[input] {
+        varValue = value
+    }
+    
+    return varValue!
+}
+
+func retrieveVariable(input : String) -> Int {
+    var varValue: Int?
+    
+    if let value = mutableDictionary[input] {
+        varValue = value
+    }
+    
+    return varValue!
 }
 
 /*
