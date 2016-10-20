@@ -72,8 +72,8 @@ func toPostfix( Tokens : [Token] ) -> Stack{
     }
     
     repeat {
-        print(postFix.pop()!)
-        //refix.push(postFix.pop()!)
+        //print(postFix.pop()!)
+        refix.push(postFix.pop()!)
     } while !postFix.isEmpty()
     
     /*          Descomentar para probar el postfix
