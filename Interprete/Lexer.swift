@@ -25,7 +25,7 @@ let ptopenRegex: String = "[\\(]"
 let ptcloseRegex: String = "[\\)]"
 
 /*
- Un token es un objeton que contiene su tipo y valor.
+ Un token es un objeto que contiene su tipo y valor.
  */
 
 // Tipos de Token

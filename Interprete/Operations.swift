@@ -31,6 +31,7 @@ func toPostfix( Tokens : [Token] ) -> Stack{
     let operatorStack = Stack()
     let postFix = Stack()
     let refix = Stack()
+    let empty = Stack()
     
     for token in Tokens {
         switch token {
@@ -47,17 +48,27 @@ func toPostfix( Tokens : [Token] ) -> Stack{
             }else{
                 operatorStack.push(token)
             }
+            
         case .Variable("e"):
-            var varValue = retrieveConstant("e")
-            operatorStack.push(String(varValue))
+            let varValue = retrieveConstant("e")
+            postFix.push(String(varValue))
+            
         case .Variable("pi"):
-            var varValue = retrieveConstant("pi")
-            operatorStack.push(String(varValue))
+            let varValue = retrieveConstant("pi")
+            postFix.push(String(varValue))
+            
         case let .Variable(token):
-            var varValue = retrieveVariable(token)
-            operatorStack.push(String(varValue))
+            let varValue = retrieveVariable(token)
+            postFix.push(String(varValue))
+            
+        case .Reserved("var"):
+            let stack = toStack(Tokens)
+            creatingVariables(stack)
+            return empty
+            
         case let .Number(token):
             postFix.push(String(token))
+            
         case let .ParenthOp(token):
             operatorStack.push(token)
             
@@ -69,6 +80,7 @@ func toPostfix( Tokens : [Token] ) -> Stack{
                 }
             }
             operatorStack.pop()
+            
         default:
             print("")
         }
@@ -86,8 +98,9 @@ func toPostfix( Tokens : [Token] ) -> Stack{
         refix.push(postFix.pop()!)
     } while !postFix.isEmpty()
     
-    /*          Descomentar para probar el postfix
-     repeat{
+    //Descomentar para probar el postfix
+    
+    /*repeat{
      print(refix.pop()!)
      }while !refix.isEmpty()
      */
@@ -95,10 +108,14 @@ func toPostfix( Tokens : [Token] ) -> Stack{
     return refix
 }
 
-func operation(post: Stack) {
+func operation(post: Stack) -> Int? {
     let operands = Stack()
-    
+    var result: Int?
     repeat{
+        if post.isEmpty() {
+            print("\n")
+            break
+        }
         if Int(post.top()!) != nil {
             operands.push(post.pop()!)
         }
@@ -108,14 +125,15 @@ func operation(post: Stack) {
             let opr = post.pop()!
             
             if operands.isEmpty() && post.isEmpty() {
-                print(evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr))
+                print(">",evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr),"\n")
+                result = evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr)
             }else{
                 operands.push(String(evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr)))
-                
             }
         }
     } while !post.isEmpty()
     
+    return result
 }
 
 func evaluate( operand1: Int, operand2: Int, opera: String) -> Int{

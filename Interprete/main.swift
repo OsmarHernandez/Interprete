@@ -11,7 +11,7 @@
  // Constantes a mostrar al inicio del programa
  let bienvenida: String = "**** Bienvenido a alguna parte del Interprete: Creacion de Variables ****"
  let instrucciones: String = "\t Inicia la oracion con el prefijo 'var'.\n\t Seguido crea el nombre de la variable.\n\t El simbolo '=' servira para asignar un valor a tu variable.\n\t Ingresa un numero con valor de entero."
- let consola: String = "tryMe>: "
+ let consola: String = "C/: "
  
  // Menu del programa
  func menu() {
@@ -20,6 +20,7 @@
     print(instrucciones)
     sleep(4)
  }
+
  
  // Ejecucion del programa
  while true {
@@ -28,29 +29,6 @@
     
     var tokens = Lexer(inputString: input!) // Se generan los tokens
     
-    // Iterando sobre cada token
-    for token in tokens {
-        switch token {
-        case let .Number(token):
-            operation(toPostfix(tokens))
-            break
-        case .Reserved("var"):
-            var stack = toStack(tokens)
-            var test = creatingVariables(stack)
-            break
-        case .Variable("e"):
-            retrieveConstant("e")
-            break
-        case .Variable("pi"):
-            retrieveConstant("pi")
-            break
-        case let .Variable(token):
-            retrieveVariable(token)
-            break
-        default:
-            print("")
-            break
-        }
-        break
-    }
+    operation(toPostfix(tokens))
+    
  }
