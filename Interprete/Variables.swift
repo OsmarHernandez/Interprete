@@ -86,6 +86,8 @@ func retrieveConstant(input : String) -> Float {
         varValue = value
     }
     
+    print(varValue!)
+    
     return varValue!
 }
 
@@ -95,6 +97,8 @@ func retrieveVariable(input : String) -> Int {
     if let value = mutableDictionary[input] {
         varValue = value
     }
+    
+    print(varValue!)
     
     return varValue!
 }
