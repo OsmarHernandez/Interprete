@@ -12,6 +12,7 @@
 		20985D611DB7087800F60C60 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20985D601DB7087800F60C60 /* Stack.swift */; };
 		20C0ECA51DB6C62000779B49 /* Extenssions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C0ECA41DB6C62000779B49 /* Extenssions.swift */; };
 		20C0ECA91DB6C67600779B49 /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C0ECA81DB6C67600779B49 /* Variables.swift */; };
+		20E384E11DB85E6600C399E2 /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E384E01DB85E6600C399E2 /* Operations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		20985D601DB7087800F60C60 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		20C0ECA41DB6C62000779B49 /* Extenssions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extenssions.swift; sourceTree = "<group>"; };
 		20C0ECA81DB6C67600779B49 /* Variables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
+		20E384E01DB85E6600C399E2 /* Operations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			children = (
 				20C0ECA81DB6C67600779B49 /* Variables.swift */,
 				20985D601DB7087800F60C60 /* Stack.swift */,
+				20E384E01DB85E6600C399E2 /* Operations.swift */,
 				20C0ECA41DB6C62000779B49 /* Extenssions.swift */,
 				204F2AE51DA99DDB004910B6 /* main.swift */,
 				201903B81DB1A0ED0068DE33 /* Lexer.swift */,
@@ -133,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				201903B91DB1A0ED0068DE33 /* Lexer.swift in Sources */,
+				20E384E11DB85E6600C399E2 /* Operations.swift in Sources */,
 				20985D611DB7087800F60C60 /* Stack.swift in Sources */,
 				20C0ECA51DB6C62000779B49 /* Extenssions.swift in Sources */,
 				204F2AE61DA99DDB004910B6 /* main.swift in Sources */,

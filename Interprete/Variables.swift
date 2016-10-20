@@ -100,9 +100,7 @@ func retrieveVariable(input : String) -> Int {
 }
 
 /*
-    Falta : 
-        Diccionario variable mantenga los valores
-        Retirar el contenido de un diccionario dependiendo de la llave (String)
+    Falta :
         Modificar lo que dice modificar
         Si el nombre de una variable se encuentra asignada, esta no se debe poder utilizar
  */

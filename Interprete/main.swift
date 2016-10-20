@@ -20,12 +20,15 @@
     print(instrucciones)
     sleep(5)
  }
-
+ 
+ 
  // Entrada del usuario
  func entrada() -> String {
     var input: String?
     print(consola)
     input = readLine()!
+    
+    print("Entre a entrada()")
     
     return input!
  }
@@ -34,6 +37,8 @@
  func tokens() -> [Token] {
     let Tokens = Lexer(inputString: entrada())
     
+    print("Entre a tokens()")
+    
     return Tokens
  }
  
@@ -41,19 +46,25 @@
  func stack() -> Stack {
     let Stack = toStack(tokens())
     
+    print("Entre a stack()")
+    
     return Stack
  }
  
+  var actualStack = toStack(tokens())
+ /*
  // Creando Variables
  func variables() -> [String : Int] {
     let variableDictionary = creatingVariables(stack())
     
     return variableDictionary
  }
- 
+ */
  // Regresa la constante MODIFICAR!
  func constant(input: String) -> Float {
     let constantVal = retrieveConstant(input)
+    
+    print("Entre a constant()")
     
     return constantVal
  }
@@ -62,13 +73,35 @@
  func variable(input: String) -> Int {
     let variableVal = retrieveVariable(input)
     
+    print("Entre a variable()")
+    
     return variableVal
  }
  
-menu()
+ func selection() {
+    for token in tokens() {
+        switch token {
+        case let .Reserved(token):
+            creatingVariables(actualStack) // creando variables
+        case .Variable("e"):
+            print(constant("e"))    // llamando el valor de 'e'
+            break
+        case .Variable("pi"):
+            print(constant("pi"))   // llamando el valor de pi
+            break
+        case let .Variable(token):
+            print(variable(token))  // llamando el valor del token
+            break
+        case let .Operand(token):
+            operation(toPostfix(tokens()))
+        default:
+            print("")
+            break
+        }
+        break
+    }
+ }
  
-variables()
-
-print(constant("pi"))
- 
-print(variable("myVar"))
+ while true {
+    selection()
+ }
