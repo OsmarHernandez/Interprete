@@ -13,6 +13,7 @@
  let instrucciones: String = "\t Inicia la oracion con el prefijo 'var'.\n\t Seguido crea el nombre de la variable.\n\t El simbolo '=' servira para asignar un valor a tu variable.\n\t Ingresa un numero con valor de entero."
  let consola: String = "tryMe>: "
  
+ // Menu del programa
  func menu() {
     print(bienvenida)
     sleep(2)
@@ -20,12 +21,14 @@
     sleep(4)
  }
  
+ // Ejecucion del programa
  while true {
-    print(consola)
-    var input: String? = readLine()!
+    print(consola)  // Mensaje de consola
+    var input: String? = readLine()!    // Entrada del usuario
     
-    var tokens = Lexer(inputString: input!)
+    var tokens = Lexer(inputString: input!) // Se generan los tokens
     
+    // Iterando sobre cada token
     for token in tokens {
         switch token {
         case let .Number(token):
@@ -51,10 +54,3 @@
         break
     }
  }
- 
- /*
-  case .Reserved("var"):
-  var stack = toStack(tokens)
-  var test = creatingVariables(stack)
-  break
-  */
