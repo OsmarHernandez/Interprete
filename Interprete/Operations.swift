@@ -47,7 +47,15 @@ func toPostfix( Tokens : [Token] ) -> Stack{
             }else{
                 operatorStack.push(token)
             }
-            
+        case .Variable("e"):
+            var varValue = retrieveConstant("e")
+            operatorStack.push(String(varValue))
+        case .Variable("pi"):
+            var varValue = retrieveConstant("pi")
+            operatorStack.push(String(varValue))
+        case let .Variable(token):
+            var varValue = retrieveVariable(token)
+            operatorStack.push(String(varValue))
         case let .Number(token):
             postFix.push(String(token))
         case let .ParenthOp(token):

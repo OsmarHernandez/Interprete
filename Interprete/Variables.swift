@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /*
     Para ejecutar todo esto, el primer token tiene que ser un .Reserver var
  */
@@ -59,19 +58,19 @@ func creatingVariables(stack : Stack) -> [String : Int] {
                         stack.pop()
                         mutableDictionary[keyVariable!] = valVariable!
                     } else {
-                        print("Erro de sintaxis 4")
+                        print("Error de sintaxis 4")
                         break
                     }
                 } else {
-                    print("Erro de sintaxis 3")
+                    print("Error de sintaxis 3")
                     break
                 }
             } else {
-                print("Erro de sintaxis 2")
+                print("Error de sintaxis 2")
                 break
             }
         } else {
-            print("Erro de sintaxis 1")
+            valVariable = retrieveVariable(stack.top()!)
             break
         }
     } while !stack.isEmpty()
