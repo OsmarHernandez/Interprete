@@ -96,6 +96,29 @@ func creatingVariables(stack : Stack) -> [String : Int] {
             // Se agrega la variable al Diccionario mutableDictionary[String : Int]
             //valVariable = retrieveVariable(stack.top()!)
             valVariable = operation(toPostfix(Lexer(inputString: strInts)))
+            
+            if stack.top() == "=" {
+                stack.pop()
+                // Busca el siguiente valor en el stack, el cual sera el nombre de la variable
+                if !stack.isEmpty() {
+                    keyVariable = stack.pop()!
+                    // Finalmente se encuentra la palabra reservada 'var' para poder crear el valor
+                    if stack.top() == "var" {
+                        stack.pop()
+                        mutableDictionary[keyVariable!] = valVariable!
+                    } else {
+                        print("Error de sintaxis 4")
+                        break
+                    }
+                } else {
+                    print("Error de sintaxis 3")
+                    break
+                }
+            } else {
+                print("Error de sintaxis 2")
+                break
+            }
+            
             break
         }
     } while !stack.isEmpty()
