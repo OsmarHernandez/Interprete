@@ -52,11 +52,11 @@ func toPostfix( Tokens : [Token] ) -> Stack{
         case .Variable("e"):
             let varValue = retrieveConstant("e")
             postFix.push(String(varValue))
-            
+            return empty
         case .Variable("pi"):
             let varValue = retrieveConstant("pi")
             postFix.push(String(varValue))
-            
+            return empty
         case let .Variable(token):
             let varValue = retrieveVariable(token)
             postFix.push(String(varValue))
