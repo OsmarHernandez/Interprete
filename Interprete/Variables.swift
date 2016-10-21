@@ -134,9 +134,8 @@ func retrieveConstant(input : String) -> Float {
     if let value = inmutableDictionary[input] {
         // Si la llave existe regresa el valor
         varValue = value
+        print(">", varValue!)
     }
-    
-    print(varValue!)
     
     return varValue!
 }
@@ -149,9 +148,9 @@ func retrieveVariable(input : String) -> Int {
     if let value = mutableDictionary[input] {
         // Si la llave existe regresa el valor
         varValue = value
-        print(varValue!)
+        print(">",varValue!)
     } else{
-        print(input)
+        print("> No value")
         return 0
     }
     

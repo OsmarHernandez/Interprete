@@ -113,7 +113,6 @@ func operation(post: Stack) -> Int? {
     var result: Int?
     repeat{
         if post.isEmpty() {
-            print("\n")
             break
         }
         if Int(post.top()!) != nil {
@@ -125,7 +124,7 @@ func operation(post: Stack) -> Int? {
             let opr = post.pop()!
             
             if operands.isEmpty() && post.isEmpty() {
-                print(">",evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr),"\n")
+                print(">",evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr))
                 result = evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr)
             }else{
                 operands.push(String(evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr)))
