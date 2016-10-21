@@ -17,7 +17,7 @@ let inmutableDictionary: [String : Float] = ["pi" : 3.141592653589793,
                                              "e" : 2.718281828459045]
 
 // Diccionario para las variables, estas son de tipo entero
-var mutableDictionary: [String : Int] = [:]
+var mutableDictionary: [String : Float] = [:]
 
 /*
     Creando el stack para tener una sintaxis antes de crear una variables
@@ -47,8 +47,8 @@ func toStack(Tokens : [Token]) -> Stack {
 }
 
 // Creando las variables, estas se añadiran al diccionario mutableDitionary
-func creatingVariables(stack : Stack) -> [String : Int] {
-    var valVariable: Int?   // Numero para la variable (Value)
+func creatingVariables(stack : Stack) -> [String : Float] {
+    var valVariable: Float?   // Numero para la variable (Value)
     var keyVariable: String?    // Nombre para la variable (Key)
     var strInts: String = ""
     var stackRefix = Stack()
@@ -67,8 +67,8 @@ func creatingVariables(stack : Stack) -> [String : Int] {
          */
         // Verificamos que el primer operando del stack sea un entero
             // En caso de que sea una letra retirar el valor con la funcion retrieveVariable(_:)
-        if Int(strInts) != nil {
-            valVariable = Int(strInts)
+        if Float(strInts) != nil {
+            valVariable = Float(strInts)
             // El siguiente valor para poder crear la variable debe de ser el simbolo '=', el cual es nuestro
             //  simbolo de asignacion
             if stack.top() == "=" {
@@ -141,8 +141,8 @@ func retrieveConstant(input : String) -> Float {
 }
 
 // Regresa el valor de la constante
-func retrieveVariable(input : String) -> Int {
-    var varValue: Int?
+func retrieveVariable(input : String) -> Float {
+    var varValue: Float?
     
     // Busca que la llave se encuentre en el diccionario
     if let value = mutableDictionary[input] {

@@ -18,7 +18,7 @@ import Foundation
 
 // Expresiones Regulares
 let spaceRegex: String = "[\\s]"
-let numberRegex: String = "[0-9]+"
+let numberRegex: String = "[0-9.]+"
 let operandRegex: String = "[\\+\\-\\*\\/\\^\\%\\=]"    // manejar = como operand o lo pongo aparte como igualdad?
 let variableRegex: String = "[a-zA-Z][a-zA-Z0-9]*" // para identificar variables
 let ptopenRegex: String = "[\\(]"
@@ -30,7 +30,7 @@ let ptcloseRegex: String = "[\\)]"
 
 // Tipos de Token
 enum Token {
-    case Number(Int)
+    case Number(Float)
     case Operand(String)
     case Variable(String)   // cualquier nombre para una variable
     case Reserved(String)   // var, const, for, else, if, while, function
@@ -44,7 +44,7 @@ typealias TokenGenerator = (String) -> Token?
 // Poniendo los Token en un arreglo
 let tokenList: Array<(String, TokenGenerator)> = [
     (spaceRegex, {_ in nil}),
-    (numberRegex, {(intValue: String) in .Number((intValue as NSString).integerValue)}),
+    (numberRegex, {(floatValue: String) in .Number((floatValue as NSString).floatValue)}),
     (operandRegex, {(stringValue: String) in .Operand(stringValue)}),
     (variableRegex, { $0 == "var" ? .Reserved($0) : .Variable($0) }),   // se le quito el constante
     (ptopenRegex, {(stringValue: String) in .ParenthOp(stringValue)}),

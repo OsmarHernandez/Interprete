@@ -52,11 +52,11 @@ func toPostfix( Tokens : [Token] ) -> Stack{
         case .Variable("e"):
             let varValue = retrieveConstant("e")
             postFix.push(String(varValue))
-            return empty
+            
         case .Variable("pi"):
             let varValue = retrieveConstant("pi")
             postFix.push(String(varValue))
-            return empty
+            
         case let .Variable(token):
             let varValue = retrieveVariable(token)
             postFix.push(String(varValue))
@@ -65,7 +65,7 @@ func toPostfix( Tokens : [Token] ) -> Stack{
             let stack = toStack(Tokens)
             creatingVariables(stack)
             return empty
-            
+
         case let .Number(token):
             postFix.push(String(token))
             
@@ -108,14 +108,14 @@ func toPostfix( Tokens : [Token] ) -> Stack{
     return refix
 }
 
-func operation(post: Stack) -> Int? {
+func operation(post: Stack) -> Float? {
     let operands = Stack()
-    var result: Int?
+    var result: Float?
     repeat{
         if post.isEmpty() {
             break
         }
-        if Int(post.top()!) != nil {
+        if Float(post.top()!) != nil {
             operands.push(post.pop()!)
         }
         if post.top() == "+" || post.top() == "-" || post.top() == "*" || post.top() == "/" || post.top() == "^" || post.top() == "%" {
@@ -124,18 +124,18 @@ func operation(post: Stack) -> Int? {
             let opr = post.pop()!
             
             if operands.isEmpty() && post.isEmpty() {
-                print(">",evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr))
-                result = evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr)
+                print(">",evaluate(Float(op1)!, operand2: Float(op2)!, opera: opr))
+                result = evaluate(Float(op1)!, operand2: Float(op2)!, opera: opr)
             }else{
-                operands.push(String(evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr)))
+                operands.push(String(evaluate(Float(op1)!, operand2: Float(op2)!, opera: opr)))
             }
-        } 
+        }
     } while !post.isEmpty()
     
     return result
 }
 
-func evaluate( operand1: Int, operand2: Int, opera: String) -> Int{
+func evaluate( operand1: Float, operand2: Float, opera: String) -> Float{
     switch opera {
     case "+":
         return operand1+operand2
@@ -146,7 +146,7 @@ func evaluate( operand1: Int, operand2: Int, opera: String) -> Int{
     case "/":
         return operand1/operand2
     case "^":
-        return Int(pow(Double(operand1), Double(operand2)))
+        return pow((operand1), (operand2))
     case "%":
         return operand1%operand2
     default:
