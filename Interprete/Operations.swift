@@ -129,7 +129,7 @@ func operation(post: Stack) -> Int? {
             }else{
                 operands.push(String(evaluate(Int(op1)!, operand2: Int(op2)!, opera: opr)))
             }
-        }
+        } 
     } while !post.isEmpty()
     
     return result
